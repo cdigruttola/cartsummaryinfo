@@ -1,0 +1,42 @@
+imports:
+  - { resource: ../common.yml }
+
+services:
+  _defaults:
+    public: true
+
+  # Controller
+  cdigruttola\Module\CartSummaryInfo\Controller\CartSummaryInfoController:
+    public: true
+    class: cdigruttola\Module\CartSummaryInfo\Controller\CartSummaryInfoController
+    arguments:
+      - "@=service('prestashop.adapter.legacy.context').getLanguages(false)"
+
+  # config form
+  cdigruttola.module.cartsummaryinfo.configuration:
+    class: 'cdigruttola\Module\CartSummaryInfo\Form\DataConfiguration\CartSummaryInfoDataConfiguration'
+    arguments:
+      - '@prestashop.adapter.legacy.configuration'
+      - '@prestashop.adapter.shop.context'
+      - '@prestashop.adapter.multistore_feature'
+
+  cdigruttola.module.cartsummaryinfo.configuration.form_provider:
+    class: 'cdigruttola\Module\CartSummaryInfo\Form\Provider\CartSummaryInfoConfigurationFormDataProvider'
+    arguments:
+      - '@cdigruttola.module.cartsummaryinfo.configuration'
+
+  cdigruttola.module.cartsummaryinfo.configuration.form_handler:
+    class: 'PrestaShop\PrestaShop\Core\Form\Handler'
+    arguments:
+      - '@form.factory'
+      - '@prestashop.core.hook.dispatcher'
+      - '@cdigruttola.module.cartsummaryinfo.configuration.form_provider'
+      - 'cdigruttola\Module\CartSummaryInfo\Form\CartSummaryInfoConfigurationType'
+      - 'BannerConfigurationForm'
+
+  cdigruttola.module.cartsummaryinfo.form.banner_configuration_type:
+    class: 'cdigruttola\Module\CartSummaryInfo\Form\CartSummaryInfoConfigurationType'
+    parent: 'form.type.translatable.aware'
+    public: true
+    tags:
+      - { name: form.type }

@@ -1,0 +1,14 @@
+services:
+  _defaults:
+    public: true
+
+  cdigruttola.cartsummaryinfo.module:
+    class: Cartsummaryinfo
+    factory: [ 'Module', 'getInstanceByName' ]
+    public: false
+    arguments:
+      - 'cartsummaryinfo'
+
+  cdigruttola.module.cartsummaryinfo.configuration.banner_configuration:
+    class: cdigruttola\Module\CartSummaryInfo\Configuration\CartSummaryInfoConfiguration
+    public: true

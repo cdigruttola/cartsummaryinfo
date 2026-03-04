@@ -1,0 +1,11 @@
+cartsummaryinfo_controller:
+    path: /cartsummaryinfo/configuration
+    methods: [GET]
+    defaults:
+        _controller: 'cdigruttola\Module\CartSummaryInfo\Controller\CartSummaryInfoController::index'
+
+cartsummaryinfo_controller_configuration_save:
+    path: /cartsummaryinfo/configuration
+    methods: [POST, PATCH]
+    defaults:
+        _controller: 'cdigruttola\Module\CartSummaryInfo\Controller\CartSummaryInfoController::saveConfiguration'

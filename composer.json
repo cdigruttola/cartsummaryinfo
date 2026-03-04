@@ -1,0 +1,32 @@
+{
+  "name": "cdigruttola/cartsummaryinfo",
+  "description": "Cart Summary Info",
+  "version": "1.0.0",
+  "authors": [
+    {
+      "name": "cdigruttola",
+      "email": "c.digruttola@hotmail.it"
+    }
+  ],
+  "require": {
+    "php": ">=7.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "cdigruttola\\Module\\CartSummaryInfo\\": "src/"
+    },
+    "classmap": [
+      "cartsummaryinfo.php"
+    ],
+    "exclude-from-classmap": []
+  },
+  "config": {
+    "preferred-install": "dist",
+    "prepend-autoloader": false,
+    "platform": {
+      "php": "7.4"
+    }
+  },
+  "type": "prestashop-module",
+  "author": "cdigruttola"
+}
